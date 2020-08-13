@@ -2,8 +2,15 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-13 11:59:07
+* @Last Modified time: 2020-08-13 23:48:00
 */
+export function clickOnMap(e) {
+    var coords = e.get('coords');
+
+    document.getElementById('latitude2').value = coords[0];
+    document.getElementById('longitude2').value = coords[1];
+    latitude2();longitude2();
+}
 
 export function latitude1(props) {
 
