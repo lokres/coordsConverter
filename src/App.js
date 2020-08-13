@@ -66,8 +66,9 @@ function App() {
               </tr>
             </tbody>
         </table>
+        <br />
         <YMaps>
-            <Map defaultState={mapData} onClick={clickOnMap}>
+            <Map defaultState={mapData} onClick={clickOnMap} width='800px' height='500px'>
 
             </Map>
         </YMaps>
