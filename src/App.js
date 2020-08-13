@@ -9,8 +9,13 @@ const mapData = {
   zoom: 5,
 };
 
-const coordinates = [
-];
+function clickOnMap(e) {
+    var coords = e.get('coords');
+
+    document.getElementById('latitude2').value = coords[0];
+    document.getElementById('longitude2').value = coords[1];
+    latitude2();longitude2();
+}
 
 
 function App() {
@@ -62,8 +67,8 @@ function App() {
             </tbody>
         </table>
         <YMaps>
-            <Map defaultState={mapData}>
-              {coordinates.map(coordinate => <Placemark geometry={coordinate} />)}
+            <Map defaultState={mapData} onClick={clickOnMap}>
+
             </Map>
         </YMaps>
     </div>
