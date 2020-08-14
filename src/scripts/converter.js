@@ -2,8 +2,10 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-13 23:48:00
+* @Last Modified time: 2020-08-14 07:55:30
 */
+import $ from 'jquery';
+
 export function clickOnMap(e) {
     var coords = e.get('coords');
 
@@ -55,6 +57,15 @@ export function longitude1(props) {
 export function latitude2(props) {
 
     let latitude = document.getElementById('latitude2').value;
+
+    let negative;
+    if(latitude < 0) {
+        $('#latN').val('S');
+        negative = true;
+    } else {
+        $('#latN').val('N');
+    }
+
     let point = latitude.split(".");
     if(point[1]) {
         let grad = point[0];
@@ -79,13 +90,23 @@ export function latitude2(props) {
     }
 
     console.log(latitude);
+    if(negative) {
+        latitude = latitude.substr(1);
+    }
     document.getElementById('latitude1').value = latitude;
 }
 
 export function longitude2(props) {
 
-    let latitude = document.getElementById('longitude2').value;
-    let point = latitude.split(".");
+    let longitude = document.getElementById('longitude2').value;
+    let negative;
+    if(longitude < 0) {
+        $('#latE').val('W');
+        negative = true;
+    } else {
+        $('#latE').val('E');
+    }
+    let point = longitude.split(".");
     if(point[1]) {
         let grad = point[0];
         console.log(grad);
@@ -105,9 +126,15 @@ export function longitude2(props) {
         if(isNaN(minutes)) {
             minutes = 0;
         }
-        latitude = grad+"."+minutes+"."+seconds;
+
+        longitude = grad+"."+minutes+"."+seconds;
     }
 
-    console.log(latitude);
-    document.getElementById('longitude1').value = latitude;
+    console.log(longitude);
+
+
+    if(negative) {
+        longitude = longitude.substr(1);
+    }
+    document.getElementById('longitude1').value = longitude;
 }

@@ -31,7 +31,7 @@ function MainData(){
         <MainTable />
         <br />
         <YMaps>
-            <Map defaultState={mapData} onClick={clickOnMap} ></Map>
+            <Map defaultState={mapData} onClick={clickOnMap} width='800px' height='500px' ></Map>
         </YMaps>
     </div>
 
@@ -52,7 +52,7 @@ render() {
   return (
 
         <div>
-        {this.state.loading ? <div class="preloader"><CubeGrid /></div> : ''}
+        {this.state.loading ? <div className="preloader"><CubeGrid /></div> : ''}
         <MainData />
         </div>
       );
