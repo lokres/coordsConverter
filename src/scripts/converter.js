@@ -2,9 +2,20 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-14 07:55:30
+* @Last Modified time: 2020-08-14 08:45:22
 */
 import $ from 'jquery';
+
+
+export function topChange(e) {
+    if((e.keyCode >=48 && e.keyCode <= 57) || e.keyCode == 190) {
+        console.log(e.keyCode);
+    } else {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+
+}
 
 export function clickOnMap(e) {
     var coords = e.get('coords');
@@ -17,6 +28,10 @@ export function clickOnMap(e) {
 export function latitude1(props) {
 
     let latitude = document.getElementById('latitude1').value;
+    if(latitude == '') {
+
+        latitude = 0;
+    }
     latitude = latitude.split(".");
 
     let N = document.getElementById('latN').value;
@@ -37,6 +52,11 @@ export function latitude1(props) {
 export function longitude1(props) {
 
     let longitude = document.getElementById('longitude1').value;
+
+    if(longitude == '') {
+        longitude = 0;
+    }
+
     longitude = longitude.split(".");
 
     let E = document.getElementById('latE').value;
