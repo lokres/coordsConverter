@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
 import './App.css';
 import {latitude2,ongitude2, clickOnMap} from './scripts/converter.js';
 import { YMaps, Map } from "react-yandex-maps";
 import GoogleMap from 'google-map-react';
 import MainTable from './scripts/MainTable.js';
+import {CubeGrid} from 'styled-loaders-react';
+
+
+
 const mapData = {
   center: [55.751574, 37.573856],
   zoom: 5,
 };
 
+const divStyle = {
+  display: 'none',
+};
+function MainData(){
 
-
-function App() {
-  return (
-    <div className="wrapper">
-      <h3>Онлайн конвертер для перевода географических координат между десятичным форматам и форматом градусы/минуты/секунды.</h3>
+    return (
+        <div className="wrapper">
+        <h3>Онлайн конвертер для перевода географических координат между десятичным форматам и форматом градусы/минуты/секунды.</h3>
         <p>Перевод осуществляется по следующей формуле:
 
         Десятичные градусы = Град + Мин/60 + Сек/3600
@@ -28,8 +34,29 @@ function App() {
             <Map defaultState={mapData} onClick={clickOnMap} ></Map>
         </YMaps>
     </div>
-  );
+
+        )
+}
+//
+class App extends Component {
+state = {
+    loading : true
 }
 
+componentDidMount() {
+    setTimeout(()=> {this.setState({loading:false})}, 1000)
+}
+
+
+render() {
+  return (
+
+        <div>
+        {this.state.loading ? <div class="preloader"><CubeGrid /></div> : ''}
+        <MainData />
+        </div>
+      );
+    }
+}
 export default App;
 

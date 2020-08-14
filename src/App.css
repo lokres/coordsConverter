@@ -36,3 +36,15 @@
     transform: rotate(360deg);
   }
 }
+
+.preloader {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: #fff;
+  z-index: 1;
+}
+.preloader > div {
+  margin: auto;
+  margin-top: 45vh;
+}
