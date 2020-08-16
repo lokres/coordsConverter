@@ -2,11 +2,13 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-14 08:45:22
+* @Last Modified time: 2020-08-16 18:25:58
 */
 import $ from 'jquery';
+import Context from '../Context.js';
 
-
+var contextType = Context;
+console.log (Context);
 export function topChange(e) {
     if((e.keyCode >=48 && e.keyCode <= 57) || e.keyCode == 190) {
         console.log(e.keyCode);
@@ -18,6 +20,8 @@ export function topChange(e) {
 }
 
 export function clickOnMap(e) {
+
+    console.log(Context);
     var coords = e.get('coords');
 
     document.getElementById('latitude2').value = coords[0];

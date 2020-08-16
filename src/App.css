@@ -37,6 +37,9 @@
   }
 }
 
+.wrapper {
+  width: 1256px;
+}
 .preloader {
   position: absolute;
   height: 100%;

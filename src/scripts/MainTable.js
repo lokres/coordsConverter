@@ -1,17 +1,56 @@
 /*
 * @Author: Aleksey
-* @Date:   2020-08-13 23:38:22
+* @Date:   2020-08-16 19:49:33
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-14 08:45:38
+* @Last Modified time: 2020-08-16 22:40:11
 */
-import React from 'react';
-import {latitude1,latitude2,longitude1,longitude2, topChange} from './converter.js';
 
 
 
-export default function MainTable() {
+import React, {Component} from 'react';
+
+import { YMaps, Map } from "react-yandex-maps";
+import {latitude1,latitude2,longitude1,longitude2, topChange, clickOnMap} from './converter.js';
+import $ from 'jquery';
+
+
+export default class MainTable extends Component {
+
+
+  constructor(props) {
+
+    super();
+    this.state = {mapCenter: {center: [45.751574, 17.573856], zoom: 5}};
+    }
+
+    handler = () => {
+        this.state = {mapCenter: {center: [45.751574, 17.573856], zoom: 5}};
+
+        let lat = $('#latitude2').val();
+        let lon = $('#longitude2').val();
+
+
+        console.log([lat,lon]);
+    }
+
+  render() {
     return (
-        <table>
+        <div>
+            <PanelTable />
+            <button style={{margin:"6px 0 10px 3px", cursor:"pointer"}} onClick={this.handler}>Найти на карте</button>
+            <YMaps>
+                <Map state={this.state.mapCenter} onClick={clickOnMap} width='800px' height='500px' />
+            </YMaps>
+
+        </div>
+    );
+  }
+}
+
+
+export function PanelTable() {
+
+    return  <table>
             <thead>
               <tr>
                 <th></th>
@@ -24,7 +63,7 @@ export default function MainTable() {
             <tbody>
               <tr>
                 <td>Градусы</td>
-                <td><input id="latitude1" onKeyDown={topChange} onChange ={latitude1} type="text" name="" placeholder="127.60.60" /></td>
+                <td><input id="latitude1" onKeyDown={topChange} onChange ={latitude1} type="text" placeholder="127.60.60" /></td>
                 <td>
                     <select onChange ={latitude1} id="latN" style={{height:"30px"}}>
                         <option value="N">С</option>
@@ -48,5 +87,4 @@ export default function MainTable() {
               </tr>
             </tbody>
         </table>
-    )
 }
