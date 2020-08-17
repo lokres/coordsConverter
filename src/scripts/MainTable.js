@@ -2,14 +2,14 @@
 * @Author: Aleksey
 * @Date:   2020-08-16 19:49:33
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-16 22:40:11
+* @Last Modified time: 2020-08-17 07:23:59
 */
 
 
 
 import React, {Component} from 'react';
 
-import { YMaps, Map } from "react-yandex-maps";
+import {YMaps, Map, withYMaps, Placemark } from "react-yandex-maps";
 import {latitude1,latitude2,longitude1,longitude2, topChange, clickOnMap} from './converter.js';
 import $ from 'jquery';
 
@@ -21,32 +21,36 @@ export default class MainTable extends Component {
 
     super();
     this.state = {mapCenter: {center: [45.751574, 17.573856], zoom: 5}};
+        $(document).on('click', 'button', function(){
+
+            let lat = $('#latitude2').val();
+            let lon = $('#longitude2').val();
+            window.myMap.setCenter([lat, lon], 7);
+         //   window.myMap.panTo([lat, lon])
+        })
     }
 
-    handler = () => {
-        this.state = {mapCenter: {center: [45.751574, 17.573856], zoom: 5}};
+    componentDidMount() {
 
-        let lat = $('#latitude2').val();
-        let lon = $('#longitude2').val();
+    }
 
 
-        console.log([lat,lon]);
+
+    handler = (props) => {
+        let {ymap} = props;
     }
 
   render() {
     return (
         <div>
             <PanelTable />
-            <button style={{margin:"6px 0 10px 3px", cursor:"pointer"}} onClick={this.handler}>Найти на карте</button>
-            <YMaps>
-                <Map state={this.state.mapCenter} onClick={clickOnMap} width='800px' height='500px' />
-            </YMaps>
+            <button >Показать на карте</button>
+            <div onClick={clickOnMap} id="map" style={{width: "600px", height: "400px"}}></div>
 
         </div>
     );
   }
 }
-
 
 export function PanelTable() {
 

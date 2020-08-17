@@ -2,7 +2,7 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-16 18:25:58
+* @Last Modified time: 2020-08-17 07:13:33
 */
 import $ from 'jquery';
 import Context from '../Context.js';
@@ -21,11 +21,7 @@ export function topChange(e) {
 
 export function clickOnMap(e) {
 
-    console.log(Context);
-    var coords = e.get('coords');
 
-    document.getElementById('latitude2').value = coords[0];
-    document.getElementById('longitude2').value = coords[1];
     latitude2();longitude2();
 }
 

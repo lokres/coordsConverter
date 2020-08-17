@@ -2,7 +2,7 @@
 * @Author: Aleksey
 * @Date:   2020-08-16 17:29:16
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-16 21:14:34
+* @Last Modified time: 2020-08-17 06:50:51
 */
 
 import React, {Component} from 'react';
