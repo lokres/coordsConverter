@@ -2,7 +2,7 @@
 * @Author: Aleksey
 * @Date:   2020-08-16 19:49:33
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-16 20:41:26
+* @Last Modified time: 2020-08-18 13:41:06
 */
 
 
@@ -27,7 +27,7 @@ export default class yandexMap extends Component {
   render() {
     return (
             <YMaps>
-              <Map defaultState={{center: [45.751574, 17.573856],zoom: 1,}} onClick={clickOnMap} width='800px' height='500px' />
+              <Map defaultState={{center: [45.751574, 17.573856],zoom: 1,}} onClick={clickOnMap}  />
             </YMaps>
 
     );

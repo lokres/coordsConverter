@@ -47,6 +47,92 @@
 
   <script type="text/javascript">
 
+function latitude2() {
+
+    let latitude = document.getElementById('latitude2').value;
+
+    let negative;
+    if(latitude < 0) {
+      document.getElementById('latN').value = 'S';
+
+        negative = true;
+    } else {
+      document.getElementById('latN').value = 'N';
+    }
+
+    let point = latitude.split(".");
+    if(point[1]) {
+        let grad = point[0];
+        console.log(grad);
+        let minutes = ("0." + point[1])*60;
+        console.log(minutes);
+        let point2 = minutes.toString().split(".");
+        let seconds = 0;
+        if(point2[1]) {
+            minutes = point2[0];
+            seconds = Math.round(("0." + point2[1])*60);
+        }
+
+        if(isNaN(seconds)) {
+            seconds = 0;
+        }
+
+        if(isNaN(minutes)) {
+            minutes = 0;
+        }
+        latitude = grad+"."+minutes+"."+seconds;
+    }
+
+    console.log(latitude);
+    if(negative) {
+        latitude = latitude.substr(1);
+    }
+
+    document.getElementById('latitude1').value = latitude;
+}
+
+function longitude2() {
+
+    let longitude = document.getElementById('longitude2').value;
+    let negative;
+    if(longitude < 0) {
+        document.getElementById('latE').value = 'W';
+        negative = true;
+    } else {
+        document.getElementById('latE').value = 'E';
+    }
+    let point = longitude.split(".");
+    if(point[1]) {
+        let grad = point[0];
+        console.log(grad);
+        let minutes = ("0." + point[1])*60;
+        console.log(minutes);
+        let point2 = minutes.toString().split(".");
+        let seconds = 0;
+        if(point2[1]) {
+            minutes = point2[0];
+            seconds = Math.round(("0." + point2[1])*60);
+        }
+
+        if(isNaN(seconds)) {
+            seconds = 0;
+        }
+
+        if(isNaN(minutes)) {
+            minutes = 0;
+        }
+
+        longitude = grad+"."+minutes+"."+seconds;
+    }
+
+    console.log(longitude);
+
+
+    if(negative) {
+        longitude = longitude.substr(1);
+    }
+    document.getElementById('longitude1').value = longitude;
+}
     var myMap;
       ymaps.ready(init);
       function init(){
@@ -60,7 +146,7 @@
             document.getElementById('latitude2').value = coords[0];
             document.getElementById('longitude2').value = coords[1];
             console.log(coords);
-
+            latitude2();longitude2();
           });
         }
 

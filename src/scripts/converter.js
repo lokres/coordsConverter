@@ -2,7 +2,7 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-17 07:13:33
+* @Last Modified time: 2020-08-18 13:55:40
 */
 import $ from 'jquery';
 import Context from '../Context.js';
@@ -21,7 +21,7 @@ export function topChange(e) {
 
 export function clickOnMap(e) {
 
-
+    console.log('ass');
     latitude2();longitude2();
 }
 
@@ -113,6 +113,7 @@ export function latitude2(props) {
     if(negative) {
         latitude = latitude.substr(1);
     }
+    console.log(latitude);
     document.getElementById('latitude1').value = latitude;
 }
 

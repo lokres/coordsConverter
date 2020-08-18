@@ -39,7 +39,9 @@
 
 .wrapper {
   width: 1256px;
+  max-width: 100vw;
 }
+
 .preloader {
   position: absolute;
   height: 100%;
@@ -50,4 +52,17 @@
 .preloader > div {
   margin: auto;
   margin-top: 45vh;
+}
+
+
+#map {
+  width: 800px;
+  height: 500px;
+  max-width: 100vw;
+  max-height: 50vh;
+}
+
+.inputE {
+  width: 80px;
+  min-width: 15vw;
 }
