@@ -26,7 +26,7 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
-    <title>React App</title>
+    <title>Coords-converter</title>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -136,11 +136,13 @@ function longitude2() {
     var myMap;
       ymaps.ready(init);
       function init(){
+
           myMap = new ymaps.Map("map", {
               center: [55.76, 37.64],
               zoom: 7,
-              controls: []
+              controls: ['fullscreenControl', 'zoomControl', 'typeSelector']
           });
+
           myMap.events.add('click', function (e) {
             var coords = e.get('coords');
             document.getElementById('latitude2').value = coords[0];
@@ -148,6 +150,36 @@ function longitude2() {
             console.log(coords);
             latitude2();longitude2();
           });
+        var geolocation = ymaps.geolocation;
+       geolocation.get({
+        provider: 'yandex',
+        mapStateAutoApply: true
+        }).then(function (result) {
+
+            var coords = result.geoObjects.position;
+            document.getElementById('latitude2').value = coords[0];
+            document.getElementById('longitude2').value = coords[1];
+            window.myMap.setCenter([coords[0], coords[1]], 7);
+            console.log(coords);
+            latitude2();longitude2();
+        });
+      var geolocationControl = new ymaps.control.GeolocationControl({
+          options: {noPlacemark: true}
+      });
+      geolocationControl.events.add('locationchange', function (result) {
+          var position = result.get('position');
+          // When creating a placemark, you can set any appearance for it.
+          var coords = position;
+          document.getElementById('latitude2').value = coords[0];
+          document.getElementById('longitude2').value = coords[1];
+          window.myMap.setCenter([coords[0], coords[1]], 7);
+          console.log(coords);
+          latitude2();longitude2();
+          // Setting the new map center to the user's current location.
+          myMap.panTo(position);
+      });
+      myMap.controls.add(geolocationControl);
+
         }
 
 

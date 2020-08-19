@@ -2,7 +2,7 @@
 * @Author: Aleksey
 * @Date:   2020-08-13 11:55:18
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-18 13:55:40
+* @Last Modified time: 2020-08-19 05:41:07
 */
 import $ from 'jquery';
 import Context from '../Context.js';
@@ -21,7 +21,6 @@ export function topChange(e) {
 
 export function clickOnMap(e) {
 
-    console.log('ass');
     latitude2();longitude2();
 }
 

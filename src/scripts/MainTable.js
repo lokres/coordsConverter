@@ -2,7 +2,7 @@
 * @Author: Aleksey
 * @Date:   2020-08-16 19:49:33
 * @Last Modified by:   Aleksey
-* @Last Modified time: 2020-08-18 14:10:07
+* @Last Modified time: 2020-08-19 05:42:52
 */
 
 
@@ -21,11 +21,21 @@ export default class MainTable extends Component {
 
     super();
     this.state = {mapCenter: {center: [45.751574, 17.573856], zoom: 5}};
-        $(document).on('click', 'button', function(){
+        $(document).on('click', '#showAtMap', function(){
 
             let lat = $('#latitude2').val();
             let lon = $('#longitude2').val();
             window.myMap.setCenter([lat, lon], 7);
+
+         //   window.myMap.panTo([lat, lon])
+        })
+
+        $(document).on('click', '#clearData', function(){
+
+            $('input').each(function(){
+                $(this).val('');
+            })
+
          //   window.myMap.panTo([lat, lon])
         })
     }
@@ -44,7 +54,11 @@ export default class MainTable extends Component {
     return (
         <div>
             <PanelTable />
-            <button >Показать на карте</button>
+            <div id="buttons">
+                <button id="showAtMap">Показать на карте</button>
+                &nbsp;&nbsp;&nbsp;
+                <button id="clearData" >Очистить поля ввода</button>
+            </div>
             <div onClick={clickOnMap} onChange={clickOnMap} id="map" style={{width: "600px", height: "400px"}}></div>
 
         </div>
